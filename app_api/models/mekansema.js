@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
+
 var saatSema = new mongoose.Schema({
     gunler: {
         type: String,
@@ -9,7 +10,7 @@ var saatSema = new mongoose.Schema({
     kapali: {
         type: Boolean,
         required: true
-    }
+    },
 }, {
     usePushEach: true
 });
@@ -21,9 +22,9 @@ var yorumSema = new mongoose.Schema({
     },
     puan: {
         type: Number,
-        required: true,
         min: 0,
-        max: 5
+        max: 5,
+        required: true
     },
     yorumMetni: {
         type: String,
@@ -31,20 +32,33 @@ var yorumSema = new mongoose.Schema({
     },
     tarih: {
         type: Date,
-        default: Date.now
-    }
+        default: Date.now()
+    },
 }, {
     usePushEach: true
 });
 
 var mekanSema = new mongoose.Schema({
-    ad:{type:String,required:true},
+    ad: {
+        type: String,
+        required: true
+    },
     adres: String,
-    puan:{type:Number, default:0,min:0,max:5},
+    puan: {
+        type: Number,
+        default: 0,
+        min: 0,
+        max: 5
+    },
     imkanlar: [String],
-    koordinatlar:{type:[Number],index:'2dsphere'},
-    saatler:[saatSema],
-    yorumlar:[yorumSema]
-    },{usePushEach: true}
-    );
-mongoose.model('mekan', mekanSema, 'mekanlar');
+    koordinatlar: {
+        type: [Number],
+        index: "2dsphere"
+    },
+    saatler: [saatSema],
+    yorumlar: [yorumSema],
+}, {
+    usePushEach: true
+});
+
+mongoose.model("mekan", mekanSema, "mekanlar");
