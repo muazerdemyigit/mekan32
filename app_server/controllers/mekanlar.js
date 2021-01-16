@@ -2,7 +2,7 @@ var express = require("express");
 var request = require("postman-request");
 
 var apiSecenekleri = {
-  sunucu: "https://muazerdemyigit1821012046.herokuapp.com/",
+  sunucu: "https://localhost:3000",
   apiYolu: "/api/mekanlar/",
 };
 
